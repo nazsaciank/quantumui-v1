@@ -246,7 +246,7 @@ export class OrderForm extends React.PureComponent<OrderFormProps, OrderFormStat
                         }
                     </div>
                 </div>
-
+                {/*ask = buy*  && sell = bid/ */}
                 <div className="cr-order-item">
                     <div className="cr-order-item__total">
                         <label className="cr-order-item__total__label">
@@ -255,11 +255,11 @@ export class OrderForm extends React.PureComponent<OrderFormProps, OrderFormStat
                         <div className="cr-order-item__total__content">
                             {orderType === 'Limit' ? (
                                 <span className="cr-order-item__total__content__amount">
-                                    {total.toFixed(currentMarketAskPrecision + currentMarketBidPrecision)}
+                                    {total.toFixed(type === 'buy' ? currentMarketAskPrecision : currentMarketBidPrecision)}
                                 </span>
                             ) : (
                                 <span className="cr-order-item__total__content__amount">
-                                    &asymp;{total.toFixed(currentMarketAskPrecision + currentMarketBidPrecision)}
+                                    &asymp;{total.toFixed(type === 'buy' ? currentMarketAskPrecision : currentMarketBidPrecision)}
                                 </span>
                             )}
                             <span className="cr-order-item__total__content__currency">
@@ -268,6 +268,7 @@ export class OrderForm extends React.PureComponent<OrderFormProps, OrderFormStat
                         </div>
                     </div>
                 </div>
+
                 <div className="cr-order-item">
                     <div className="cr-order-item__available">
                         <label className="cr-order-item__available__label">
